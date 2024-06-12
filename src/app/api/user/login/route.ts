@@ -31,7 +31,7 @@ export async function POST(req: NextRequest) {
         // console.log(getUser)
 
         if (!getUser) {
-            return NextResponse.json({ success: false, message: 'User not exist with given mail' }, { status: 404 })
+            return NextResponse.json({ success: false, message: 'User not exist with given userId' }, { status: 404 })
         }
 
 

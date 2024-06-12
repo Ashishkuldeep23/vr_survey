@@ -19,6 +19,9 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { useGlobalContext } from "@/context/contextProvider"
 import { useRouter } from "next/navigation"
 import toast from "react-hot-toast"
+import { useEffect, useState } from "react"
+import Loader from "./loader"
+import { gettingTokenInCookieAndLocalHost } from "@/helper/helper"
 
 const formSchema = z.object({
     // username: z.string().min(2, {
@@ -32,10 +35,12 @@ const formSchema = z.object({
 export default function LogInForm() {
     // ...
 
-
     const router = useRouter()
 
     const setUserData = useGlobalContext()?.setUserData
+
+    const [errMsg, setErrMsg] = useState<string>("")
+    const [isLoading, setIsLoading] = useState<boolean>(false)
 
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
@@ -56,23 +61,46 @@ export default function LogInForm() {
             return toast.error("Mandatory fileds are missing.")
         }
 
+        // // // Back to normal all states ------->
+        setErrMsg("")
+        setIsLoading(true)
 
-        let result = await logInUser(values)
+        try {
 
-        // console.log({ result })
+            let result = await logInUser(values)
+
+            console.log({ result })
+
+            if (result && result.success && result.data && setUserData) {
+                // alert("Now move to dashboard")
+
+                // // // Set here cookie -------->
+
+                // document.cookie = `token=${result.data.token};`;
+
+                localStorage.setItem("surveyToken", result.data.token)
+
+                setUserData(result.data)
+
+                router.push("/dashboard")
+            }
 
 
-        if (result && result.success && result.data && setUserData) {
-            // alert("Now move to dashboard")
+            if (!result.success) {
+                setErrMsg(result.message)
+            }
 
-            setUserData(result.data)
 
-            router.push("/dashboard")
+        } catch (err) {
+            toast.error(JSON.stringify(err))
 
+        } finally {
+            setIsLoading(false)
         }
 
-    }
 
+
+    }
 
 
     async function logInUser(bodyData: z.infer<typeof formSchema>) {
@@ -93,14 +121,24 @@ export default function LogInForm() {
     }
 
 
+    useEffect(() => {
+        const userToken = gettingTokenInCookieAndLocalHost()
+        if (userToken) {
+            router.replace("/dashboard")
+        }
+    }, [])
+
 
 
     return (
         <Form {...form}>
             <form
                 onSubmit={form.handleSubmit(onSubmit)}
-                className="space-y-8"
+                className="space-y-8 relative"
             >
+
+                <Loader isLoading={isLoading} />
+
                 <FormField
                     control={form.control}
                     name='userId'
@@ -128,6 +166,11 @@ export default function LogInForm() {
                     )}
                 />
 
+                {
+                    errMsg
+                    &&
+                    <p className=" text-red-400 font-semibold ml-1">{errMsg}</p>
+                }
 
                 <Button type="submit">Submit</Button>
             </form>
