@@ -6,6 +6,7 @@ import { gettingTokenInCookieAndLocalHost } from "@/helper/helper"
 import { useRouter } from 'next/navigation'
 import { useGlobalContext } from '@/context/contextProvider'
 import Image from 'next/image'
+import { v4 as uuidv4 } from 'uuid';
 
 // import toast from 'react-hot-toast'
 
@@ -82,22 +83,12 @@ const Dashboard = () => {
             {/* filter div here ---------------> */}
             <div className='my-10 bg-blue-200 rounded p-5 flex justify-between'>
 
-                <div className=' w-[70%] flex justify-between flex-wrap'>
+                <div className=' w-[70%] flex justify-between flex-wrap gap-2'>
                     <p className=' border border-black px-2 py-1'>Search bar for member</p>
 
                     <select className='border border-black w-28' name="" id="">
-                        <option disabled selected value="">Taluka</option>
-                        <option value="1">1</option>
-                        <option value="1">1</option>
-                        <option value="1">1</option>
-                        <option value="1">1</option>
-                        <option value="1">1</option>
-                    </select>
-
-
-                    <select className='border border-black w-28' name="" id="">
-                        <option disabled selected value="">Village</option>
-                        <option value="1">1</option>
+                        {/* <option disabled defaultValue="Taluka" value=""></option> */}
+                        <option value="1">Taluka</option>
                         <option value="1">1</option>
                         <option value="1">1</option>
                         <option value="1">1</option>
@@ -106,8 +97,18 @@ const Dashboard = () => {
 
 
                     <select className='border border-black w-28' name="" id="">
-                        <option disabled selected value="">Ward</option>
+                        {/* <option disabled defaultValue={"Village"} value=""></option> */}
+                        <option value="1">Village</option>
                         <option value="1">1</option>
+                        <option value="1">1</option>
+                        <option value="1">1</option>
+                        <option value="1">1</option>
+                    </select>
+
+
+                    <select className='border border-black w-28' defaultValue={"Ward"} name="" id="">
+                        {/* <option   value="">Ward</option> */}
+                        <option value="1">Ward</option>
                         <option value="1">1</option>
                         <option value="1">1</option>
                         <option value="1">1</option>
@@ -128,11 +129,11 @@ const Dashboard = () => {
             </div>
 
 
-            <div className=' my-10 p-5  rounded bg-blue-200 flex gap-4 flex-wrap '>
+            <div className=' my-10 p-5  rounded bg-blue-200 flex gap-4 flex-wrap  justify-center sm:justify-start '>
 
                 {
-                    [null, null, null, null].map((ele, i) => {
-                        return <div className=' w-[280px] h-[230px] bg-white border rounded'>
+                    [null, null, null, null].map(() => {
+                        return <div key={uuidv4()} className=' w-[280px] h-[230px] bg-white border rounded'>
 
                         </div>
                     })
