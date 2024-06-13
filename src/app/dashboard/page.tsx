@@ -47,11 +47,11 @@ const Dashboard = () => {
     return (
         <section
 
-            className=' bg-gray-300 min-h-[100vh] w-full py-3 md:py-7 px-2 sm:px-20 lg:px-36 flex gap-2 flex-col md:flex-row '
+            className=' bg-sky-100 min-h-[100vh] w-full py-3 md:py-7 px-2 sm:px-20 lg:px-36 flex gap-2 flex-col md:flex-row '
         >
 
             {/* nav bar -------> */}
-            <div className=' bg-blue-100 max-h-[85vh] rounded-xl  md:w-[25vh]  my-5 py-2 w-full flex justify-between gap-5 md:items-center  md:flex-col md:py-5  '>
+            <div className=' bg-white shadow-md shadow-zinc-400 max-h-[85vh] rounded-xl  md:w-[25vh]  my-5 py-2 w-full flex justify-between gap-5 md:items-center  md:flex-col md:py-5  '>
 
                 <div className=' w-[60%]  '>
                     <ul className=' flex justify-between items-center flex-wrap gap-2  md:gap-y-5 '>
@@ -123,7 +123,7 @@ const Dashboard = () => {
 
 
                 {/* filter div here ---------------> */}
-                <div className=' bg-blue-100 rounded-xl p-5 flex justify-between'>
+                <div className=' bg-white shadow-md shadow-zinc-400 rounded-xl p-5 flex justify-between'>
 
                     <div className=' w-[70%] flex justify-between flex-wrap gap-2'>
                         <p className=' border border-black px-2 py-1'>Search bar for member</p>
@@ -171,11 +171,11 @@ const Dashboard = () => {
                 </div>
 
 
-                <div className='bg-blue-100 h-auto w-auto md:w-[70vw]  mt-10 p-5  rounded-xl  flex gap-4 flex-wrap  justify-center sm:justify-start '>
+                <div className='bg-sky-100 h-auto w-auto md:w-[70vw]  mt-10 p-5  rounded-xl  flex gap-8 flex-wrap  justify-center sm:justify-start '>
 
                     {
                         [null, null, null, null , null , null , null , null ].map(() => {
-                            return <div key={uuidv4()} className=' w-[280px] h-[230px] bg-white border rounded'>
+                            return <div key={uuidv4()} className=' w-[280px] h-[230px]  bg-white shadow-md shadow-zinc-400  border rounded-xl '>
 
                             </div>
                         })
