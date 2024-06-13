@@ -1,22 +1,23 @@
 import mongoose from "mongoose";
 
 
-const UserSchema = new mongoose.Schema({
+const villageSchema = new mongoose.Schema({
 
-    username: {
+    name: {
         type: String,
         required: [true, "Please provide a username"],
         trim: true
     },
-    userId: {
+    district: {
         type: String,
         required: [true, "Please provide a username"],
-    },
-    password: {
-        type: String,
-        required: [true, "Please provide a password"],
         trim: true
     },
+    taluka: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "talukas"
+    }
+
 
 }, { timestamps: true })
 
@@ -24,7 +25,7 @@ const UserSchema = new mongoose.Schema({
 
 // // // Creating models in next js by userSchema --->
 
-const User = mongoose.models.users || mongoose.model("users", UserSchema);
+const User = mongoose.models.villages || mongoose.model("villages", villageSchema);
 
 export default User
 
