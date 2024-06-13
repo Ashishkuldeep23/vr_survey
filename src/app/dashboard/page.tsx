@@ -41,26 +41,65 @@ const Dashboard = () => {
 
     }, [])
 
+
+    // // // md is going to breakpoint here -------->
+
     return (
         <section
 
-            className=' bg-gray-300 min-h-[100vh] w-full py-5 md:py-10 px-2 sm:px-20 lg:px-36'
+            className=' bg-gray-300 min-h-[100vh] w-full py-3 md:py-7 px-2 sm:px-20 lg:px-36 flex gap-2 flex-col md:flex-row '
         >
 
             {/* nav bar -------> */}
+            <div className=' bg-blue-100 max-h-[85vh] rounded-xl  md:w-[25vh]  my-5 py-2 w-full flex justify-between gap-5 md:items-center  md:flex-col md:py-5  '>
 
-            <div className=' my-5 w-full flex justify-between gap-5  '>
+                <div className=' w-[60%]  '>
+                    <ul className=' flex justify-between items-center flex-wrap gap-2  md:gap-y-5 '>
 
-                <div className=' w-[60%]'>
-                    <ul className=' flex justify-between items-center flex-wrap gap-2 '>
-                        <li className=' rounded bg-blue-500 px-3 text-lg font-semibold'>Dashboard</li>
-                        <li className='rounded bg-blue-500 px-3 text-lg font-semibold'>Add Member</li>
-                        <li className='rounded bg-blue-500 px-3 text-lg font-semibold'>Add Location</li>
-                        <li className='rounded bg-blue-500 px-3 text-lg font-semibold'>Add user</li>
+                        {
+                            [
+                                {
+                                    tabName: "Dashboard",
+                                    action: "",
+                                    style: "",
+
+                                },
+                                {
+                                    tabName: "Add Member",
+                                    action: "",
+                                    style: "",
+
+                                },
+                                {
+                                    tabName: "Add Location",
+                                    action: "",
+                                    style: "",
+
+                                },
+                                {
+                                    tabName: "Add user",
+                                    action: "",
+                                    style: "",
+
+                                },
+                            ].map((ele) => {
+                                return <li key={uuidv4()} className=' rounded bg-sky-300  text-lg font-semibold'>
+                                    <button className='px-3'>{ele.tabName}</button>
+                                </li>
+                            })
+                        }
+
+
+                        {/* <li className=' rounded bg-blue-500 px-3 text-lg font-semibold'></li>
+                        <li className='rounded bg-blue-500 px-3 text-lg font-semibold'></li>
+                        <li className='rounded bg-blue-500 px-3 text-lg font-semibold'></li>
+                        <li className='rounded bg-blue-500 px-3 text-lg font-semibold'></li> */}
+
+
                     </ul>
 
                 </div>
-                <div className=' w-[20%] flex flex-col  items-end '>
+                <div className=' w-[20%] flex flex-col  items-end md:mx-5 '>
 
                     <div className='rounded-full flex justify-center items-center flex-col'>
 
@@ -76,71 +115,75 @@ const Dashboard = () => {
                     </div>
 
                 </div>
-
             </div>
 
 
-            {/* filter div here ---------------> */}
-            <div className='my-10 bg-blue-200 rounded p-5 flex justify-between'>
 
-                <div className=' w-[70%] flex justify-between flex-wrap gap-2'>
-                    <p className=' border border-black px-2 py-1'>Search bar for member</p>
-
-                    <select className='border border-black w-28' name="" id="">
-                        {/* <option disabled defaultValue="Taluka" value=""></option> */}
-                        <option value="1">Taluka</option>
-                        <option value="1">1</option>
-                        <option value="1">1</option>
-                        <option value="1">1</option>
-                        <option value="1">1</option>
-                    </select>
+            <div className='my-5'>
 
 
-                    <select className='border border-black w-28' name="" id="">
-                        {/* <option disabled defaultValue={"Village"} value=""></option> */}
-                        <option value="1">Village</option>
-                        <option value="1">1</option>
-                        <option value="1">1</option>
-                        <option value="1">1</option>
-                        <option value="1">1</option>
-                    </select>
+                {/* filter div here ---------------> */}
+                <div className=' bg-blue-100 rounded-xl p-5 flex justify-between'>
+
+                    <div className=' w-[70%] flex justify-between flex-wrap gap-2'>
+                        <p className=' border border-black px-2 py-1'>Search bar for member</p>
+
+                        <select className='border border-black w-28' name="" id="">
+                            {/* <option disabled defaultValue="Taluka" value=""></option> */}
+                            <option value="1">Taluka</option>
+                            <option value="1">1</option>
+                            <option value="1">1</option>
+                            <option value="1">1</option>
+                            <option value="1">1</option>
+                        </select>
 
 
-                    <select className='border border-black w-28' defaultValue={"Ward"} name="" id="">
-                        {/* <option   value="">Ward</option> */}
-                        <option value="1">Ward</option>
-                        <option value="1">1</option>
-                        <option value="1">1</option>
-                        <option value="1">1</option>
-                        <option value="1">1</option>
-                    </select>
+                        <select className='border border-black w-28' name="" id="">
+                            {/* <option disabled defaultValue={"Village"} value=""></option> */}
+                            <option value="1">Village</option>
+                            <option value="1">1</option>
+                            <option value="1">1</option>
+                            <option value="1">1</option>
+                            <option value="1">1</option>
+                        </select>
+
+
+                        <select className='border border-black w-28' defaultValue={"Ward"} name="" id="">
+                            {/* <option   value="">Ward</option> */}
+                            <option value="1">Ward</option>
+                            <option value="1">1</option>
+                            <option value="1">1</option>
+                            <option value="1">1</option>
+                            <option value="1">1</option>
+                        </select>
+
+                    </div>
+
+
+
+
+                    <div className=' w-[20%]'>
+
+                        <button className=' border border-black px-2 py-1'>Search</button>
+
+                    </div>
 
                 </div>
 
 
+                <div className='bg-blue-100 h-auto w-auto md:w-[70vw]  mt-10 p-5  rounded-xl  flex gap-4 flex-wrap  justify-center sm:justify-start '>
 
+                    {
+                        [null, null, null, null , null , null , null , null ].map(() => {
+                            return <div key={uuidv4()} className=' w-[280px] h-[230px] bg-white border rounded'>
 
-                <div className=' w-[20%]'>
-
-                    <button className=' border border-black px-2 py-1'>Search</button>
+                            </div>
+                        })
+                    }
 
                 </div>
 
             </div>
-
-
-            <div className=' my-10 p-5  rounded bg-blue-200 flex gap-4 flex-wrap  justify-center sm:justify-start '>
-
-                {
-                    [null, null, null, null].map(() => {
-                        return <div key={uuidv4()} className=' w-[280px] h-[230px] bg-white border rounded'>
-
-                        </div>
-                    })
-                }
-
-            </div>
-
 
 
         </section>
