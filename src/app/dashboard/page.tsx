@@ -216,14 +216,14 @@ const FilterSectionWithCardDiv = () => {
 
                 <div className=' w-[100%] md:w-[80%] flex justify-between items-center flex-wrap gap-2'>
 
-                    <div className=' bg-white w-[90%] sm:w-[70%] md:w-[40%] border border-black flex gap-2 items-center px-3  rounded-full text-xl py-0.5 '>
+                    <div className=' relative overflow-hidden bg-white w-[90%] sm:w-[70%] md:w-[40%] border border-black flex gap-2 items-center rounded-full text-xl '>
 
-                        <span><CiSearch /></span>
+                        <span className=' absolute left-1'><CiSearch /></span>
                         <input
                             value={filterInputs.searchText}
                             onChange={(e) => { filterInputOnChange(e) }}
                             type="text"
-                            className=' w-[85%]'
+                            className=' w-[100%] rounded-full pl-6'
                             placeholder='Search bar for member'
                         />
                     </div>
@@ -334,15 +334,17 @@ const FilterSectionWithCardDiv = () => {
                         <div
                             className=' w-[100%]'
                         >
+
+                            
                             <p
                                 className='my-2 py-1 px-2 border-b border-black w-full flex justify-between flex-wrap gap-1'
                             >
 
-                                <span className=' w-32 overflow-x-auto '>Member Name</span>
-                                <span className=' w-32 overflow-x-auto '>Talukaaaaaa</span>
-                                <span className=' w-32 overflow-x-auto '>Village</span>
-                                <span className=' w-32 overflow-x-auto '>Ward</span>
-                                <span className=' w-32 overflow-x-auto '>View Details</span>
+                                <span className=' w-28 sm:w-32 overflow-x-auto text-sm sm:text-base  '>Member Name</span>
+                                <span className=' w-28 sm:w-32 overflow-x-auto text-sm sm:text-base '>Talukaaaaaa</span>
+                                <span className=' w-28 sm:w-32 overflow-x-auto text-sm sm:text-base '>Village</span>
+                                <span className=' w-28 sm:w-32 overflow-x-auto text-sm sm:text-base '>Ward</span>
+                                <span className=' w-28 sm:w-32 overflow-x-auto text-sm sm:text-base '>View Details</span>
 
                             </p>
 
@@ -352,11 +354,11 @@ const FilterSectionWithCardDiv = () => {
                                 className='my-2 py-1 px-2 border-b border-black w-full flex justify-between flex-wrap gap-1'
                             >
 
-                                <span className=' w-32 overflow-x-auto '>Member Name</span>
-                                <span className=' w-32 overflow-x-auto '>Talukaaaaaa</span>
-                                <span className=' w-32 overflow-x-auto '>Village</span>
-                                <span className=' w-32 overflow-x-auto '>Ward</span>
-                                <span className=' w-32 overflow-x-auto '>View Details</span>
+                                <span className=' w-28 sm:w-32 overflow-x-auto text-sm sm:text-base  '>Member Name</span>
+                                <span className=' w-28 sm:w-32 overflow-x-auto text-sm sm:text-base '>Talukaaaaaa</span>
+                                <span className=' w-28 sm:w-32 overflow-x-auto text-sm sm:text-base '>Village</span>
+                                <span className=' w-28 sm:w-32 overflow-x-auto text-sm sm:text-base '>Ward</span>
+                                <span className=' w-28 sm:w-32 overflow-x-auto text-sm sm:text-base '>View Details</span>
 
                             </p>
 
@@ -366,27 +368,16 @@ const FilterSectionWithCardDiv = () => {
                                 className='my-2 py-1 px-2 border-b border-black w-full flex justify-between flex-wrap gap-1'
                             >
 
-                                <span className=' w-32 overflow-x-auto '>Member Name</span>
-                                <span className=' w-32 overflow-x-auto '>Talukaaaaaa</span>
-                                <span className=' w-32 overflow-x-auto '>Village</span>
-                                <span className=' w-32 overflow-x-auto '>Ward</span>
-                                <span className=' w-32 overflow-x-auto '>View Details</span>
+                                <span className=' w-28 sm:w-32 overflow-x-auto text-sm sm:text-base  '>Member Name</span>
+                                <span className=' w-28 sm:w-32 overflow-x-auto text-sm sm:text-base '>Talukaaaaaa</span>
+                                <span className=' w-28 sm:w-32 overflow-x-auto text-sm sm:text-base '>Village</span>
+                                <span className=' w-28 sm:w-32 overflow-x-auto text-sm sm:text-base '>Ward</span>
+                                <span className=' w-28 sm:w-32 overflow-x-auto text-sm sm:text-base '>View Details</span>
 
                             </p>
 
 
 
-                            <p
-                                className='my-2 py-1 px-2 border-b border-black w-full flex justify-between flex-wrap gap-1'
-                            >
-
-                                <span className=' w-32 overflow-x-auto '>Member Name</span>
-                                <span className=' w-32 overflow-x-auto '>Talukaaaaaa</span>
-                                <span className=' w-32 overflow-x-auto '>Village</span>
-                                <span className=' w-32 overflow-x-auto '>Ward</span>
-                                <span className=' w-32 overflow-x-auto '>View Details</span>
-
-                            </p>
 
 
 
