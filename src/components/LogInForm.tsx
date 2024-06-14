@@ -38,9 +38,11 @@ export default function LogInForm() {
     const router = useRouter()
 
     const setUserData = useGlobalContext()?.setUserData
+    const isLoading = useGlobalContext()?.isLoading
+    const setIsLoading = useGlobalContext()?.setIsLoading
 
     const [errMsg, setErrMsg] = useState<string>("")
-    const [isLoading, setIsLoading] = useState<boolean>(false)
+
 
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
@@ -63,7 +65,7 @@ export default function LogInForm() {
 
         // // // Back to normal all states ------->
         setErrMsg("")
-        setIsLoading(true)
+        setIsLoading && setIsLoading(true)
 
         try {
 
@@ -95,7 +97,7 @@ export default function LogInForm() {
             toast.error(JSON.stringify(err))
 
         } finally {
-            setIsLoading(false)
+            setIsLoading && setIsLoading(false)
         }
 
 
@@ -128,6 +130,8 @@ export default function LogInForm() {
         }
     }, [])
 
+    // console.log(isLoading)
+
 
 
     return (
@@ -137,7 +141,7 @@ export default function LogInForm() {
                 className="space-y-8 relative"
             >
 
-                <Loader isLoading={isLoading} />
+                <Loader isLoading={isLoading || false} />
 
                 <FormField
                     control={form.control}

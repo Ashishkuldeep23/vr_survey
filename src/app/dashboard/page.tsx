@@ -1,11 +1,7 @@
 'use client'
 
-import React, { useEffect, useState } from 'react'
-
-import { gettingTokenInCookieAndLocalHost } from "@/helper/helper"
-import { useRouter } from 'next/navigation'
+import React, { useState } from 'react'
 import { useGlobalContext } from '@/context/contextProvider'
-import Image from 'next/image'
 import { v4 as uuidv4 } from 'uuid';
 import { TbDeviceIpadHorizontalSearch } from "react-icons/tb";
 import { FiUsers } from "react-icons/fi";
@@ -20,34 +16,30 @@ import { CiUser } from "react-icons/ci";
 
 const Dashboard = () => {
 
-    const router = useRouter()
-
-    const userData = useGlobalContext()?.userData
-    const fetchUserDataWithToken = useGlobalContext()?.fetchUserDataWithToken
-
     // console.log(userData);
 
-    useEffect(() => {
+    // // // Now checking user data with token in app.tsx file that is main page for us.
+    // useEffect(() => {
 
-        // console.log(gettingTokenInCookieAndLocalHost())
+    //     // console.log(gettingTokenInCookieAndLocalHost())
 
-        const userToken = gettingTokenInCookieAndLocalHost()
+    //     const userToken = gettingTokenInCookieAndLocalHost()
 
-        if (!userToken) {
-            router.replace("/")
-        }
-        else {
+    //     if (!userToken) {
+    //         router.replace("/")
+    //     }
+    //     else {
 
-            // console.log(userData)
+    //         // console.log(userData)
 
-            if (userData && !userData.id) {
-                // console.log("fetch data with token ----------।")
+    //         if (userData && !userData.id) {
+    //             // console.log("fetch data with token ----------।")
 
-                fetchUserDataWithToken && fetchUserDataWithToken(userToken)
-            }
-        }
+    //             fetchUserDataWithToken && fetchUserDataWithToken(userToken)
+    //         }
+    //     }
 
-    }, [])
+    // }, [])
 
 
     // // // md is going to breakpoint here -------->
@@ -58,12 +50,9 @@ const Dashboard = () => {
             className=' bg-sky-100 min-h-[100vh] w-full py-3 md:py-7 px-2 sm:px-20 lg:px-36 flex gap-2 flex-col md:flex-row '
         >
 
-
             <NavbarDiv />
 
-
             <FilterSectionWithCardDiv />
-
 
         </section>
     )
@@ -183,10 +172,24 @@ const FilterSectionWithCardDiv = () => {
     })
 
 
+    const setFilterDataAndGet = (obj: TypeFilterInputs) => {
+
+
+        console.log("Call here data with throtelling --------->")
+
+
+        setFiterInputs({ ...obj })
+
+    }
+
+
 
     const filterInputOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 
-        setFiterInputs(pre => ({ ...pre, searchText: e.target.value }))
+        // setFiterInputs(pre => ({ ...pre, searchText: e.target.value }))
+        // setFiterInputs(pre => ({ ...pre, searchText: e.target.value }))
+
+        setFilterDataAndGet({ ...filterInputs, searchText: e.target.value })
 
     }
 
@@ -194,12 +197,9 @@ const FilterSectionWithCardDiv = () => {
 
     const filterSelectOnChange = (whichOne: keyof TypeFilterInputs, e: React.ChangeEvent<HTMLSelectElement>) => {
 
+        // console.log(e.target.value)
 
-        console.log(e.target.value)
-
-
-        setFiterInputs({ ...filterInputs, [whichOne]: e.target.value })
-
+        setFilterDataAndGet({ ...filterInputs, [whichOne]: e.target.value })
 
     }
 
@@ -207,7 +207,7 @@ const FilterSectionWithCardDiv = () => {
 
     return (
 
-        <div className='my-5'>
+        <div className=''>
 
             {/* filter div here ---------------> */}
             <div

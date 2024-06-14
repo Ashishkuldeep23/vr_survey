@@ -1,4 +1,10 @@
+'use client'
+
 import LogInForm from "@/components/LogInForm";
+import { useGlobalContext } from "@/context/contextProvider";
+import { gettingTokenInCookieAndLocalHost } from "@/helper/helper";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 // import Image from "next/image";
 // import Link from "next/link";
 // import { useRouter } from "next/router";
@@ -18,6 +24,34 @@ priority
 
 
 export default function Home() {
+
+  const router = useRouter()
+  const userData = useGlobalContext()?.userData
+  const fetchUserDataWithToken = useGlobalContext()?.fetchUserDataWithToken
+
+
+  useEffect(() => {
+
+    // console.log(gettingTokenInCookieAndLocalHost())
+
+    const userToken = gettingTokenInCookieAndLocalHost()
+
+    if (!userToken) {
+      router.replace("/")
+    }
+    else {
+
+      // console.log(userData)
+
+      if (userData && !userData.id) {
+        // console.log("fetch data with token ----------।")
+
+        fetchUserDataWithToken && fetchUserDataWithToken(userToken)
+      }
+    }
+
+  }, [])
+
 
 
   return (
